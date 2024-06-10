@@ -43,16 +43,6 @@ public class TimerApp extends Frame {
         add(createButtonPanel(), gbc);
 
         Runtime.getRuntime().addShutdownHook(new Thread(this::saveRemainingTime));
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we) {
-                saveRemainingTime();
-                if (timer != null) {
-                    timer.cancel();
-                }
-                dispose();
-            }
-        });
 
         if (remainingTime > 0) {
             startTimer();
